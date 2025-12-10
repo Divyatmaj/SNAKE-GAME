@@ -55,3 +55,26 @@
         button:hover {
             background-color: #27ae60;
         }
+
+
+        #fullGameOverScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    color: #e74c3c;
+    font-size: 50px;
+    font-weight: bold;
+
+    z-index: 9999;
+    cursor: pointer;
+}
