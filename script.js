@@ -3,8 +3,8 @@
     var ctx = canvas.getContext('2d');
 
 // Game variables
-    var gridSize = 20;
-    var tileCount = 20;
+    var tileCount = 40;
+    var gridSize = canvas.width / tileCount;
     var snake = [];
     var headX = 10;
     var headY = 10;
@@ -68,11 +68,12 @@
             }
             
             // Clear canvas
-                ctx.fillStyle = '#34495e';
+                ctx.fillStyle = '#111116';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+
             // Draw food
-                ctx.fillStyle = '#e74c3c';
+                ctx.fillStyle = '#ff6b00';
                 ctx.fillRect(foodX * gridSize, foodY * gridSize, gridSize - 2, gridSize - 2);
 
             // Add current position to snake
@@ -84,7 +85,7 @@
                 }
 
             // Draw snake
-                ctx.fillStyle = '#2ecc71';
+                ctx.fillStyle = '#32ff7e';
                 for (var i = 0; i < snake.length; i++) {
                     ctx.fillRect(snake[i].x * gridSize, snake[i].y * gridSize, gridSize - 2, gridSize - 2);
                 }
@@ -126,6 +127,12 @@ function startGame() {
 }
 
 // Keyboard controls
+document.addEventListener('keydown', function(e) {
+    if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space"].includes(e.code)) {
+        e.preventDefault();
+    }
+});
+
 document.addEventListener('keydown', function(e) {
     // Arrow key controls
     if (e.code === 'ArrowUp' && velocityY !== 1) {
