@@ -14,26 +14,26 @@ var velocityX = 0;
 var velocityY = 0;
 var score = 0;
 var gameRunning = false;
-var tailLength = 1;
+var tailLength = 2;
 var highScore = 0;
 document.getElementById("score").textContent =
     `Score: 0 | High Score: ${highScore}`;
 
 //images
 const food = new Image();
-food.src = 'food.png';
+food.src = 'assets/food.png';
 const head_left = new Image();
-head_left.src = 'head_left.png';
+head_left.src = 'assets/head_left.png';
 const head_right = new Image();
-head_right.src = 'head_right.png';
+head_right.src = 'assets/head_right.png';
 const head_up = new Image();
-head_up.src = 'head_up.png';
+head_up.src = 'assets/head_up.png';
 const head_down = new Image();
-head_down.src = 'head_down.png';
+head_down.src = 'assets/head_down.png';
 const body_h = new Image();
-body_h.src = 'body_h.png';
+body_h.src = 'assets/body_h.png';
 const body_v = new Image();
-body_v.src = 'body_v.png';
+body_v.src = 'assets/body_v.png';
 
 
 // Draw everything
@@ -145,7 +145,7 @@ function drawGame() {
                 } else{
                     //body
                     ctx.fillStyle = '#00c303ff';
-                    ctx.fillRect(snake[i].x * gridSize-i/2+3, snake[i].y * gridSize-i/2+3, gridSize-(snake.length-i), gridSize-(snake.length-i));
+                    ctx.fillRect(snake[i].x * gridSize+(snake.length-i)/2, snake[i].y * gridSize+(snake.length-i)/2, gridSize-(snake.length-i), gridSize-(snake.length-i));
                 }
             }
     }
@@ -175,7 +175,7 @@ headY = 10;
 velocityX = 1;
 velocityY = 0;
 score = 0;
-tailLength = 6;
+tailLength = 2;
 foodX = 15;
 foodY = 15;
 gameRunning = true;
@@ -213,3 +213,8 @@ if ((e.code === 'ArrowRight' || e.code === 'KeyD') && velocityX !== -1) {
 
 // Game loop - runs 10 times per second
 setInterval(drawGame, 100);
+
+
+// if (snake.length==18){
+//     //end game
+// }
