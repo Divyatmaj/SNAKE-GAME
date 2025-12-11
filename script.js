@@ -22,6 +22,18 @@ document.getElementById("score").textContent =
 //images
 const food = new Image();
 food.src = 'food.png';
+const head_left = new Image();
+head_left.src = 'head_left.png';
+const head_right = new Image();
+head_right.src = 'head_right.png';
+const head_up = new Image();
+head_up.src = 'head_up.png';
+const head_down = new Image();
+head_down.src = 'head_down.png';
+const body_h = new Image();
+body_h.src = 'body_h.png';
+const body_v = new Image();
+body_v.src = 'body_v.png';
 
 
 // Draw everything
@@ -79,20 +91,20 @@ function drawGame() {
                 for (let i=0;i<tileCount;i+=1){
                     if (i%2==0){
                         ctx.fillStyle = '#393939ff';
-                        ctx.fillRect(i*gridSize, j*gridSize, gridSize-2, gridSize-2);
+                        ctx.fillRect(i*gridSize, j*gridSize, gridSize, gridSize);
                     } else{
                         ctx.fillStyle = '#303030ff';
-                        ctx.fillRect(i*gridSize, j*gridSize, gridSize-2, gridSize-2);
+                        ctx.fillRect(i*gridSize, j*gridSize, gridSize, gridSize);
                     }
                 }
                 } else{
                     for (let i=0;i<tileCount;i+=1){
                     if (i%2==1){
                         ctx.fillStyle = '#393939ff';
-                        ctx.fillRect(i*gridSize, j*gridSize, gridSize-2, gridSize-2);
+                        ctx.fillRect(i*gridSize, j*gridSize, gridSize, gridSize);
                     } else{
                         ctx.fillStyle = '#303030ff';
-                        ctx.fillRect(i*gridSize, j*gridSize, gridSize-2, gridSize-2);
+                        ctx.fillRect(i*gridSize, j*gridSize, gridSize, gridSize);
                     }
                 }
                 }
@@ -113,9 +125,28 @@ function drawGame() {
             }
 
         // Draw snake
-            ctx.fillStyle = '#32ff7e';
+            // ctx.fillStyle = '#32ff7e';
             for (var i = 0; i < snake.length; i++) {
-                ctx.fillRect(snake[i].x * gridSize, snake[i].y * gridSize, gridSize - 2, gridSize - 2);
+                if (i==snake.length-1){
+                    //head
+                    if (velocityX==-1){
+                        ctx.fillStyle = '#ffffffff';
+                        ctx.drawImage(head_left, snake[i].x * gridSize, snake[i].y * gridSize-3, gridSize + 5, gridSize + 6);
+                    }else if(velocityX==1){
+                        ctx.fillStyle = '#ffffffff';
+                        ctx.drawImage(head_right, snake[i].x * gridSize, snake[i].y * gridSize-3, gridSize +5, gridSize +6);
+                    } else if(velocityY==1){
+                        ctx.fillStyle = '#ffffffff';
+                        ctx.drawImage(head_down, snake[i].x * gridSize-3, snake[i].y * gridSize, gridSize +6, gridSize +5);
+                    } else {
+                        ctx.fillStyle = '#ffffffff';
+                        ctx.drawImage(head_up, snake[i].x * gridSize-3, snake[i].y * gridSize, gridSize +6, gridSize +5);
+                    }
+                } else{
+                    //body
+                    ctx.fillStyle = '#00c303ff';
+                    ctx.fillRect(snake[i].x * gridSize-i/2+3, snake[i].y * gridSize-i/2+3, gridSize-(snake.length-i), gridSize-(snake.length-i));
+                }
             }
     }
 
@@ -144,7 +175,7 @@ headY = 10;
 velocityX = 1;
 velocityY = 0;
 score = 0;
-tailLength = 2;
+tailLength = 6;
 foodX = 15;
 foodY = 15;
 gameRunning = true;
@@ -156,11 +187,10 @@ document.getElementById('startBtn').style.display = 'none';
 
 // Keyboard controls
 document.addEventListener('keydown', function(e) {
-if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space"].includes(e.code)) {
+if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "KeyW", "KeyA", "KeyS", "KeyD", "Space"].includes(e.code)) {
     e.preventDefault();
 }
 });
-
 document.addEventListener('keydown', function(e) {
 // Arrow key controls
 if ((e.code === 'ArrowUp' || e.code === 'KeyW') && velocityY !== 1) {
