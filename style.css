@@ -87,7 +87,7 @@ button:hover {
 }
 
 #titleBanner {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     display: flex;
     justify-content: center;
 }
