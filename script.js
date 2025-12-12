@@ -78,6 +78,29 @@ function drawGame() {
                 document.getElementById("score").textContent =
                         `Score: ${score} | High Score: ${highScore}`;
 
+            if (score === 18) {
+
+                console.log("WIN SCREEN TRIGGERED");
+                gameRunning = false;
+
+                const winImg = document.createElement("img");
+                winImg.id = "winScreen";
+                winImg.src = "assets/winImg.jpg"; 
+                winImg.style.position = "fixed";
+                winImg.style.top = "0";
+                winImg.style.left = "0";
+                winImg.style.width = "100vw";
+                winImg.style.height = "100vh";
+                winImg.style.objectFit = "fit";
+                winImg.style.zIndex = "999999";
+
+                document.body.appendChild(winImg);
+                winImg.addEventListener("click", function () {
+                winImg.remove();
+                startGame();
+            });
+                return;
+            }
 
                 foodX = Math.floor(Math.random() * tileCount);
                 foodY = Math.floor(Math.random() * tileCount);
@@ -125,7 +148,6 @@ function drawGame() {
             }
 
         // Draw snake
-            // ctx.fillStyle = '#32ff7e';
             for (var i = 0; i < snake.length; i++) {
                 if (i==snake.length-1){
                     //head
@@ -146,6 +168,25 @@ function drawGame() {
                     //body
                     ctx.fillStyle = '#00c303ff';
                     ctx.fillRect(snake[i].x * gridSize+(snake.length-i)/2, snake[i].y * gridSize+(snake.length-i)/2, gridSize-(snake.length-i), gridSize-(snake.length-i));
+                    
+                }
+            }
+            for (var i=0;i<snake.length;i++){
+                ctx.strokeStyle = '#00c303ff';
+                ctx.lineWidth = 3*(i)/5;
+                if (i==0){
+                    ctx.lineWidth=0.5;
+                }
+                if (i==snake.length-2){
+                    continue
+                }
+                if ((snake[i].x < 1)||(snake[i].x >= (tileCount-1))||(snake[i].y < 1)||(snake[i].y >= (tileCount-1))){
+                    continue
+                }else{
+                    ctx.beginPath();
+                    ctx.moveTo(snake[i].x * gridSize+gridSize/2, snake[i].y * gridSize+gridSize/2);
+                    ctx.lineTo(snake[i+1].x * gridSize+gridSize/2, snake[i+1].y * gridSize+gridSize/2);
+                    ctx.stroke();
                 }
             }
     }
@@ -214,6 +255,7 @@ if ((e.code === 'ArrowRight' || e.code === 'KeyD') && velocityX !== -1) {
 // Game loop - runs 10 times per second
 setInterval(drawGame, 100);
 
+//NOTE:
 
 // if (snake.length==18){
 //     //end game
