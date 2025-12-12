@@ -47,7 +47,7 @@ Optional high-score persistence (local storage / file).
 
 Clone repo:
 
-git clone https://github.com/Divyatmaj/SNAKE-GAME/edit/master
+git clone https://github.com/Divyatmaj/SNAKE-GAME.git
 
 cd snake
 
