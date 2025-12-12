@@ -1,63 +1,70 @@
-        body {
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            background-color: #2c3e50;
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            color: #ecf0f1;
-            margin-bottom: 10px;
-        }
-
-        #score {
-            color: #ecf0f1;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        #gameCanvas {
-            border: 3px solid #ecf0f1;
-            background-color: #34495e;
-        }
-
-        #instructions {
-            color: #ecf0f1;
-            margin-top: 20px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        #gameOver {
-            display: none;
-            color: #e74c3c;
-            font-size: 32px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        button {
-            margin-top: 15px;
-            padding: 10px 30px;
-            font-size: 18px;
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #27ae60;
-        }
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* min-height: 80vh; */
+    height: 100vh;
+    background-color: #2c3e50;
+    font-family: Arial, sans-serif;
+    background-image: url(assets/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+}
 
 
-        #fullGameOverScreen {
+h1 {
+    color: #ecf0f1;
+    margin-bottom: 10px;
+}
+
+#score {
+    color: #ecf0f1;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#gameCanvas {
+    border: 3px solid #ecf0f1;
+    background-color: #34495e;
+}
+
+#instructions {
+    color: #bbe5f0;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#gameOver {
+    display: none;
+    color: #e74c3c;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 35px;
+    font-size: 20px;
+    background-color: #2ecc71;
+    color: rgb(244, 255, 118);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+
+#fullGameOverScreen {
     position: fixed;
     top: 0;
     left: 0;
@@ -65,7 +72,7 @@
     height: 100vh;
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(6px);
-    
+
     display: none;
     justify-content: center;
     align-items: center;
