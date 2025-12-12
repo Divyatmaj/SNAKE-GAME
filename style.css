@@ -85,3 +85,15 @@ button:hover {
     z-index: 9999;
     cursor: pointer;
 }
+
+#titleBanner {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#titleImage {
+    width: 400px;      
+    height: 300px;
+    filter: drop-shadow(0 0 6px black);
+}
